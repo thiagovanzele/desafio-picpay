@@ -1,6 +1,6 @@
 package desafio_picpay.com.repository;
 
-import desafio_picpay.com.entity.Usuario;
+import desafio_picpay.com.entity.usuario.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

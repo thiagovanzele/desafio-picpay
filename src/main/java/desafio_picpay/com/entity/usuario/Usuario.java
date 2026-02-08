@@ -1,8 +1,7 @@
-package desafio_picpay.com.entity;
+package desafio_picpay.com.entity.usuario;
 
 import desafio_picpay.com.enums.TipoUsuario;
 import jakarta.persistence.*;
-import jdk.jfr.Enabled;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,6 +21,7 @@ public class Usuario {
     private String cpf;
     private String email;
     private String senha;
+    private boolean ativo;
 
     @Enumerated(EnumType.STRING)
     private TipoUsuario tipoUsuario;
