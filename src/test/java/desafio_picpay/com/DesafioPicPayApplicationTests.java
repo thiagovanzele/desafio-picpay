@@ -1,4 +1,4 @@
-package desafio_picpay.com.desafio_pic_pay;
+package desafio_picpay.com;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

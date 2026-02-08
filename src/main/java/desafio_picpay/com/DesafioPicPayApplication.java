@@ -1,4 +1,4 @@
-package desafio_picpay.com.desafio_pic_pay;
+package desafio_picpay.com;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
