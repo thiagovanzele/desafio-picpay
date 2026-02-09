@@ -1,16 +1,16 @@
 package desafio_picpay.com.service;
 
-import desafio_picpay.com.dto.UsuarioDTO;
-import desafio_picpay.com.dto.UsuarioUpdate;
+import desafio_picpay.com.dto.usuario.UsuarioDTO;
+import desafio_picpay.com.dto.usuario.UsuarioUpdate;
 import desafio_picpay.com.entity.usuario.Usuario;
-import desafio_picpay.com.entity.usuario.UsuarioResponse;
+import desafio_picpay.com.dto.usuario.UsuarioResponse;
 import desafio_picpay.com.exception.ArgumentoInvalidoException;
 import desafio_picpay.com.repository.UsuarioRepository;
 import org.hibernate.ObjectNotFoundException;
-import org.jspecify.annotations.NonNull;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Service
@@ -44,8 +44,15 @@ public class UsuarioService {
         usuario.setSenha(usuarioDTO.senha());
         usuario.setNome(usuarioDTO.nome());
         usuario.setAtivo(true);
+        usuario.setSaldo(usuarioDTO.saldo());
         usuario.setTipoUsuario(usuarioDTO.tipoUsuario());
 
+        usuarioRepository.save(usuario);
+    }
+
+    public void adicionarSaldo(Long usuarioId, BigDecimal valor) {
+        Usuario usuario = buscarUsuarioPorId(usuarioId);
+        usuario.setSaldo(usuario.getSaldo().add(valor));
         usuarioRepository.save(usuario);
     }
 
@@ -73,7 +80,7 @@ public class UsuarioService {
         usuarioRepository.save(usuario);
     }
 
-    private Usuario buscarUsuarioPorId(Long id) {
+    public Usuario buscarUsuarioPorId(Long id) {
         return usuarioRepository.findById(id)
                 .orElseThrow(() -> new ObjectNotFoundException(Usuario.class, "Usuário não encontrado"));
     }

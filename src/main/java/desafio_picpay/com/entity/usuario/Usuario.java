@@ -7,6 +7,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.math.BigDecimal;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -22,6 +24,7 @@ public class Usuario {
     private String email;
     private String senha;
     private boolean ativo;
+    private BigDecimal saldo;
 
     @Enumerated(EnumType.STRING)
     private TipoUsuario tipoUsuario;

@@ -1,4 +1,4 @@
-package desafio_picpay.com.dto;
+package desafio_picpay.com.dto.usuario;
 
 import desafio_picpay.com.enums.TipoUsuario;
 

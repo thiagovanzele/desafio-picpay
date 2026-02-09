@@ -1,9 +1,8 @@
 package desafio_picpay.com.controller;
 
-import desafio_picpay.com.dto.UsuarioDTO;
-import desafio_picpay.com.dto.UsuarioUpdate;
-import desafio_picpay.com.entity.usuario.Usuario;
-import desafio_picpay.com.entity.usuario.UsuarioResponse;
+import desafio_picpay.com.dto.usuario.UsuarioDTO;
+import desafio_picpay.com.dto.usuario.UsuarioUpdate;
+import desafio_picpay.com.dto.usuario.UsuarioResponse;
 import desafio_picpay.com.service.UsuarioService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;

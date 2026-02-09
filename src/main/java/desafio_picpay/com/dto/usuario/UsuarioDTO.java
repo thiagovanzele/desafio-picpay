@@ -1,7 +1,9 @@
-package desafio_picpay.com.dto;
+package desafio_picpay.com.dto.usuario;
 
 import desafio_picpay.com.enums.TipoUsuario;
 import jakarta.validation.constraints.*;
+
+import java.math.BigDecimal;
 
 public record UsuarioDTO(
         @NotBlank(message = "Nome é obrigatório")
@@ -12,7 +14,11 @@ public record UsuarioDTO(
 
         @NotBlank
         @Email
-
         String email,
+
         String senha,
+
+        @Min(0)
+        BigDecimal saldo,
+
         TipoUsuario tipoUsuario) {}

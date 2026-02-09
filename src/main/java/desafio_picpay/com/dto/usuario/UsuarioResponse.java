@@ -1,5 +1,6 @@
-package desafio_picpay.com.entity.usuario;
+package desafio_picpay.com.dto.usuario;
 
+import desafio_picpay.com.entity.usuario.Usuario;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
