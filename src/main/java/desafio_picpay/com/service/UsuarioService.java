@@ -5,6 +5,7 @@ import desafio_picpay.com.dto.usuario.UsuarioUpdate;
 import desafio_picpay.com.entity.usuario.Usuario;
 import desafio_picpay.com.dto.usuario.UsuarioResponse;
 import desafio_picpay.com.exception.ArgumentoInvalidoException;
+import desafio_picpay.com.exception.ObjetoNaoEncontrado;
 import desafio_picpay.com.repository.UsuarioRepository;
 import org.hibernate.ObjectNotFoundException;
 import org.springframework.stereotype.Service;
@@ -82,6 +83,6 @@ public class UsuarioService {
 
     public Usuario buscarUsuarioPorId(Long id) {
         return usuarioRepository.findById(id)
-                .orElseThrow(() -> new ObjectNotFoundException(Usuario.class, "Usuário não encontrado"));
+                .orElseThrow(() -> new ObjetoNaoEncontrado("Usuário não encontrado"));
     }
 }
