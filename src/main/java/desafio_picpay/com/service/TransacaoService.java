@@ -1,14 +1,18 @@
 package desafio_picpay.com.service;
 
 import desafio_picpay.com.dto.transacao.TransacaoDto;
+import desafio_picpay.com.dto.transacao.TransacaoResponse;
 import desafio_picpay.com.entity.transacao.Transacao;
 import desafio_picpay.com.entity.usuario.Usuario;
 import desafio_picpay.com.enums.TipoUsuario;
 import desafio_picpay.com.exception.AcaoProibidaException;
 import desafio_picpay.com.repository.TransacaoRepository;
+import desafio_picpay.com.repository.UsuarioRepository;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.Collections;
+import java.util.List;
 
 @Service
 public class TransacaoService {
@@ -16,13 +20,26 @@ public class TransacaoService {
     private TransacaoRepository transacaoRepository;
     private UsuarioService usuarioService;
     private AutorizadorService autorizadorService;
+    private UsuarioRepository usuarioRepository;
 
     public TransacaoService(TransacaoRepository transacaoRepository,
                             UsuarioService usuarioService,
-                            AutorizadorService autorizadorService) {
+                            AutorizadorService autorizadorService,
+                            UsuarioRepository usuarioRepository) {
         this.transacaoRepository = transacaoRepository;
         this.usuarioService = usuarioService;
         this.autorizadorService = autorizadorService;
+        this.usuarioRepository = usuarioRepository;
+    }
+
+    public List<TransacaoResponse> buscarTransacaoUsuarioId(Long idUsuario) {
+        List<Transacao> transacoes = transacaoRepository.buscarTransacoesPorIdUsuario(idUsuario);
+
+        if (transacoes.isEmpty()) {
+            return Collections.emptyList();
+        }
+
+        return TransacaoResponse.fromEntities(transacoes);
     }
 
     public void criarTransacao(TransacaoDto transacaoDto) {
@@ -55,6 +72,5 @@ public class TransacaoService {
         transacao.setValor(transacaoDto.valor());
 
         transacaoRepository.save(transacao);
-
     }
 }

@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.math.BigDecimal;
+
 @Builder
 @Getter
 @AllArgsConstructor
@@ -17,14 +19,19 @@ public class UsuarioResponse {
     private String cpf;
     private String email;
     private String tipoUsuario;
+    private BigDecimal saldo;
+    private int totalTransacoes;
 
     public static UsuarioResponse fromEntity(Usuario usuario) {
         return builder()
                 .usuarioId(usuario.getId())
+                .usuarioId(usuario.getId())
                 .cpf(usuario.getCpf())
                 .email(usuario.getEmail())
                 .nome(usuario.getNome())
+                .saldo(usuario.getSaldo())
                 .tipoUsuario(usuario.getTipoUsuario().getCodigo())
+                .totalTransacoes(usuario.getNumeroTransacoes())
                 .build();
     }
 }

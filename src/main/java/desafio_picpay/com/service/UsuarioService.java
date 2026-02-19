@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -47,6 +48,7 @@ public class UsuarioService {
         usuario.setAtivo(true);
         usuario.setSaldo(usuarioDTO.saldo());
         usuario.setTipoUsuario(usuarioDTO.tipoUsuario());
+        usuario.setDataCriacao(LocalDate.now());
 
         usuarioRepository.save(usuario);
     }
